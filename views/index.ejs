@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Vending Machine</title>
+  </head>
+  <body>
+    <section>
+      <!-- vending machine that holds items -->
+      <section>
+        <!-- for every item in the collection array, display into vending machine. (div to style) -->
+        <ul>
+          <% for(var i =0; i< collection.length; i++) {%>
+          <li class="item-container">
+            <span class="title-plate">item name</span>
+            <img src="" alt="vender owner uploaded item image">
+            <span class="title-plate">machine number</span>
+          </li>
+        <% } %>
+        </ul>
+
+        <!-- vending machine numberpad piece -->
+        <section>
+          <!-- an empty tag to display price after user enters machine number (div to style) -->
+          <div class="">
+            <p></p>
+          </div>
+          <!-- number pad -->
+          <ul>
+            <li><div class="">1</div></li>
+            <li><div class="">2</div></li>
+            <li><div class="">3</div></li>
+            <li><div class="">1</div></li>
+            <li><div class="">1</div></li>
+            <li><div class="">6</div></li>
+            <li><div class="">7</div></li>
+            <li><div class="">8</div></li>
+            <li><div class="">9</div></li>
+            <li><div class="">X</div></li>
+            <li><div class="">0</div></li>
+            <li><div class="">.</div></li>
+          </ul>
+          <!-- was gonna add a button but am unsure how to add a numberpad into a form ergo we can have clientside js count to 3 clicks and then run the rest of the code. when vending machine owner creates machine numbers, the digit must not exceed 3. -->
+        </section>
+
+        <!-- vending machine bottom piece -->
+      <section>
+      <!-- div to style -->
+      <div class="vendDoor">
+        <img src="../public/images/down-arrow.svg" alt="down arrow">
+        <span>Push</span>
+        <img src="../public/images/down-arrow.svg" alt="down arrow">
+      </div>
+    </section>
+
+    <!-- credits -->
+    <!-- <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> -->
+  </body>
+</html>
