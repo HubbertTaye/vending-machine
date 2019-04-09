@@ -1,22 +1,14 @@
 {
-  "name": "vending-machine",
+  "name": "vending-machine-2",
   "version": "1.0.0",
-  "description": "fullstack vending machine",
+  "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "vend": "nodemon server.js",
     "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/HubbertTaye/vending-machine.git"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/HubbertTaye/vending-machine/issues"
-  },
-  "homepage": "https://github.com/HubbertTaye/vending-machine#readme",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
@@ -25,7 +17,8 @@
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
-    "mongodb": "^3.2.2",
+    "local": "^0.3.3",
+    "mongodb": "^3.2.3",
     "mongoose": "^5.4.22",
     "morgan": "^1.9.1",
     "passport": "^0.4.0",

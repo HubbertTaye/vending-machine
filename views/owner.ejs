@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Vending Machine</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <!-- item display section -->
+    <section>
+      <ul>
+        <% for(var i=0; i<inventory.length; i++) {%>
+        <li>
+          <span><%= `Name: ${inventory[i].name}` %></span>
+          <span><%= ` Vending Code: ${inventory[i].code}` %></span>
+          <img src="<%= inventory[i].url %>" alt="item-picture">
+          <span><%= `Stock: ${inventory[i].stock}` %></span>
+          <span><%= `$${parseFloat(Math.round(inventory[i].price * 100) / 100).toFixed(2)}` %></span>
+          <span>
+            <input type="text" name="restock" placeholder="00">
+            <button class="restockBtn" type="button" name="restock">Restock<button>
+          </span>
+          <i class="fas fa-minus-circle"></i>
+        </li>
+        <% } %>
+      </ul>
+    </section>
+
+    <!-- bank section -->
+    <section>
+      <% for(var i=0; i<transactions.length; i++) {%>
+      <h3><%= `Current Balance: $${parseFloat(Math.round(transactions[i].totalAmount * 100) / 100).toFixed(2)}` %></h3>
+      <% } %>
+    </section>
+<!-- form for owner to input bank amount -->
+    <form action="/ownerBank" method="post">
+      <p>Type in the amount of money you have for restocking vending items and vending transactions.</p>
+      <input type="text" name="bankAmount" placeholder="Your Budget">
+      <button type="submit" name="button">Submit</button>
+    </form>
+
+<!-- form for owner to input vending machine info -->
+    <form action="/owner" method="post">
+      <p>Fill out information for vending items for users to pick from.</p>
+      <input type="text" name="itemName" placeholder="Item Name">
+      <input type="text" name="itemUrl" placeholder="Image Url">
+      <input type="text" name="stock" placeholder="Stock Number">
+      <input type="text" name="itemPrice" placeholder="Item Price">
+      <input type="text" name="itemCode" placeholder="Vending Code">
+      <button type="submit" name="owner-btn">Upload to Vending Machine</button>
+    </form>
+    <script src="js/owner.js"></script>
+  </body>
+</html>

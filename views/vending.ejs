@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <section class="container">
+      <section class="vender">
+        <section class="items">
+          <h3>Items</h3>
+          <ul class="options">
+            <% for(var i=0; i<inventory.length; i++) {%>
+            <li>
+              <span><%= inventory[i].name %></span>
+              <span><%= inventory[i].code %></span>
+              <img src="<%= inventory[i].url %>" alt="item-picture">
+              <span><%= `stock: ${inventory[i].stock}` %></span>
+              <span><%= `$${parseFloat(Math.round(inventory[i].price * 100) / 100).toFixed(2)}` %></span>
+            </li>
+            <% } %>
+          </ul>
+        </section>
+
+        <!-- user inputs item machine code, change to numberpad -->
+        <section class="keypad">
+          <!-- add a numberpad -->
+          <!-- <input id="machineCode" type="text" name="item Code"> -->
+
+          <div class="dispCode">
+            <p id="machineCode"></p>
+          </div>
+          
+          <ul class="numpad">
+              <li class="numBtn" value="1">1</li>
+              <li class="numBtn" value="2">2</li>
+              <li class="numBtn" value="3">3</li>
+              <li class="numBtn" value="4">4</li>
+              <li class="numBtn" value="5">5</li>
+              <li class="numBtn" value="6">6</li>
+              <li class="numBtn" value="7">7</li>
+              <li class="numBtn" value="8">8</li>
+              <li class="numBtn" value="9">9</li>
+              <li class="numBtn" value="X">X</li>
+              <li class="numBtn" value="0">0</li>
+              <li class="numBtn" value="<"><</li>
+          </ul>
+          <!-- key for owner to log in to see /owner page -->
+          <a href="/login"><i class="fas fa-fingerprint"></i></a>
+          <button id="itemCodeBtn" type="button" name=""> Enter</button>
+        </section>
+
+        <!-- displaying user's selection -->
+        <section class="display" >
+          <p id="nameDisplay"></p>
+          <img id="picDisplay" src="" alt="">
+        </section>
+      </section>
+    </section>
+
+<script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,58 +1,43 @@
-// server.js
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 8080;
 
-// set up ======================================================================
-// get all the tools we need
-var express  = require('express');
-var app      = express();
-var port     = process.env.PORT || 8080;
 const MongoClient = require('mongodb').MongoClient
-var mongodb = require('mongodb');
-var mongoose = require('mongoose');
-var passport = require('passport');
-var flash    = require('connect-flash');
+const mongoose = require('mongoose');
 
+const morgan = require('morgan');
 
-var morgan       = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser   = require('body-parser');
-var session      = require('express-session');
+const flash = require('connect-flash');
 
-var configDB = require('./config/database.js');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+
+const passport = require('passport');
+const session = require('express-session');
+
+const configDB = require('./config/database.js');
 
 var db
 
-// configuration ===============================================================
 mongoose.connect(configDB.url, (err, database) => {
   if (err) return console.log(err)
   db = database
-  require('./app/routes.js')(app, passport, db);
-}); // connect to our database
-
-app.listen(port, () => {
-    MongoClient.connect(configDB.url, { useNewUrlParser: true }, (error, client) => {
-        if(error) {
-            throw error;
-        }
-        db = client.db(configDB.dbName);
-        console.log("Connected to `" + configDB.dbName + "`!");
-        require('./app/routes.js')(app, passport, db);
-    });
+  require('./app/routes.js')(app, passport, db); //passes app, passport and db into file routes in folder app. routes.js runs a function
 });
 
-require('./config/passport')(passport); // pass passport for configuration
+require('./config/passport')(passport);
 
-// set up our express application
-app.use(morgan('dev')); // log every request to the console
-app.use(cookieParser()); // read cookies (needed for auth)
-app.use(bodyParser.json()); // get information from html forms
+app.use(morgan('dev'));
+app.use(cookieParser());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'))
 
-app.set('view engine', 'ejs'); // set up ejs for templating
+app.set('view engine', 'ejs');
 
 // required for passport
 app.use(session({
-    secret: 'rcbootcamp2019a', // session secret
+    secret: 'vending', // session secret
     resave: true,
     saveUninitialized: true
 }));
@@ -60,10 +45,5 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-
-// routes ======================================================================
-//require('./app/routes.js')(app, passport, db); // load our routes and pass in our app and fully configured passport
-
-// launch ======================================================================
-// app.listen(port);
-// console.log('The magic happens on port ' + port);
+app.listen(port);
+console.log(`When you wish upon... ${port}`);
