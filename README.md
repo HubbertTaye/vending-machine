@@ -1,7 +1,6 @@
-## Installation
+# House Gardner Vending Machine
 
-1. Clone repo
-2. run `npm install`
+A vending machine app that allows vender to input items and the information for the items, 
 
 ## Usage
 
